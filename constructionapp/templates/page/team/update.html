@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Team  Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">Teams </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update Teams details   
+            </h5>
+            
+        </div>
+    </div>
+
+    {% if team %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label 
+                                    for="name" 
+                                    class="mt-1">
+                                    Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="name" 
+                                    id="name"
+                                    value="{{team.name}}"
+                                    tabindex="1" 
+                                    class="form-control"
+                                    autocomplete="name" >
+                                    
+                            </div>
+
+                            <div class="form-group">
+                                <label for="designation">Designation</label>
+                                <input 
+                                    name="designation"  
+                                    id="designation" 
+                                    class="form-control"
+                                    tabindex="2"
+                                    value = {{team.designation}}
+                                    required 
+                                    >
+                                    </input>
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label 
+                                    for="profilepic" 
+                                    class="mt-1">
+                                    ProfilePic: 
+                                    <a href="/media/{{team.profilepic}}">
+                                    {{team.profilepic}}
+                                    </a>
+                                </label>
+                                <input 
+                                    type="file" 
+                                    class="form-control" 
+                                    name="profilepic" 
+                                    id="profilepic" 
+                                    tabindex="3"
+                                    autofocus
+
+                                    >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Bio">Bio</label>
+                                <textarea 
+                                    name="Bio" 
+                                    rows="30" 
+                                    cols="80" 
+                                    id="Bio" 
+                                    class="form-control"
+                                    tabindex="4"
+                                    required 
+                                    >{{team.Bio}}</textarea>
+                                <script>
+                                    CKEDITOR.replace( "Bio" );
+                                </script>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input 
+                                    name="address"  
+                                    id="address" 
+                                    class="form-control"
+                                    value = {{team.address}}
+                                    tabindex="5"
+                                    required 
+                                    >
+                                    </input>
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input 
+                                    type="number"
+                                    name="phone"  
+                                    id="phone" 
+                                    class="form-control"
+                                    value = {{team.phone}}
+                                    tabindex="6"
+                                    required 
+                                    >
+                                    </input>
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input 
+                                    name="email"  
+                                    id="email" 
+                                    class="form-control"
+                                    value = {{team.email}} 
+                                    tabindex="7"
+                                    required 
+                                    >
+                                    </input>
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input 
+                                    name="website"  
+                                    id="website" 
+                                    class="form-control"
+                                    value = {{team.website}} 
+                                    tabindex="8"
+                                    required 
+                                    >
+                                    </input>
+                               
+                            </div>
+
+                            <div class="form-group text-center">
+                                <input 
+                                    type="submit" 
+                                    class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                    value="Update">
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+  
+
+</div>
+
+{% endblock content %}

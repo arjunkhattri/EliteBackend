@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Banner - Manage UI
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <h4 class="pb-3 pl-1 mb-2"><a href="{% url 'banner' %}">Banner</a>  / Update Banner</h4>
+            </div>
+        </div>
+       <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+              {% if banner %}
+            
+             <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label 
+                        for="image">
+                        Current Image: <br>
+                        <img 
+                            class="text-primary"
+                            target="_blank"
+                            style="width:100% !important;height:auto !important;"
+                            src="/uploads/{{banner.image}}">
+                            
+                    </label>
+
+                    <br>
+                    
+                    <input 
+                        type="file" 
+                        class="form-control" 
+                        name="image"  
+                        accept="image/*"
+                        tabindex="1"  
+                        autofocus 
+                      >
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value="Update" class="btn btn-primary btn-sm mt-3 ml-3">
+                  </div>
+            </form>
+             {% endif %}
+          </div>
+       </div>
+       <div class="row">
+           <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="text-center" style="color:rgb(42, 42, 42);">*{{message}}</p>
+                {% endfor %}
+            {% endif %}
+           </div>
+       </div>
+    </div>
+    
+    
+
+{% endblock %}

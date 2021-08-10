@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Subservices list Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+        p {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if subservices %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">ServiceTitle</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{ subservices.servicetitle }}
+                        </p>
+                        {% comment %} <h3 class="mt-5">Images</h3>
+                        <img class="card-img-top"  src="{{home.bg_image.url}}" alt="company Image">  {% endcomment %}
+                        
+                        {% comment %} <p class="card-text text-dark text-justify" > 
+                            {{home.bg_image }}
+                        </p> {% endcomment %}
+                        <h3 class="mt-5 mb-3">Descriptions </h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{subservices.description | safe }}
+                        </p>
+                    
+                        <div class="form-group text-center" >
+                            
+                            <a href="{% url 'update_subservices' subservices.id %}" class="btn btn-primary text mt-3 mt-3 ml-3"> 
+                                Update
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+
+</div>
+
+{% endblock content %}

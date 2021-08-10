@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Services Page Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+      
+                <h4 class=" mb-4">Services </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update Services details   
+            </h5>
+            
+        </div>
+    </div>
+
+    {% if services %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+    
+
+                            {{form.as_p}}
+
+                            <script>
+                                 CKEDITOR.replace( "shortdesc" );
+                            </script>
+
+                            <script>
+                                CKEDITOR.replace( "longdesc" );
+                            </script>
+
+                             
+
+
+                                <div class="form-group">
+                                <label for="longthumb">LongThumb:</label>
+                                <input 
+                                    type="file"
+                                    allow="image/*"
+                                    name="images" 
+                                    id="images" 
+                                    class="form-control"
+                                    multiple
+
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label 
+                                        for="longthumb" 
+                                        class="mt-1">
+                                        Images: 
+                                    </label> <br>
+                                    {% for image in services.images.all %}
+                                       
+                                    <div class="card mr-3 mb-5" style="width: 18rem;display:inline-block;">
+                                        <img src="{{image.longthumb.url}}" class="card-img-top" alt="...">
+                                    
+                                    </div>
+                                     {% endfor %}
+                                   
+                                        
+                                </div>
+                           
+                            <div class="form-group text-center">
+                                <input 
+                                    type="submit" 
+                                    class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                    value="Update">
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+  
+
+</div>
+
+{% endblock content %}

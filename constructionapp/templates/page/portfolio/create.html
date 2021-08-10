@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Portfolio Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">Portfolio </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Add Portfolio Details
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                  
+                    {{form.as_p}}
+
+                    
+                        <script>
+                            CKEDITOR.replace( "description" );
+                        </script>
+                
+
+                   
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Create">
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+  
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,58 @@
+ {% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+    Review detail - Elite Construction
+
+{% endblock title %}
+
+} 
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            <h3 class="pb-3 pl-1">
+                <a href="{% url 'testimonials_list' %}">Testimonials</a>
+            </h3>
+            <h5 class="text-secondary mt-1">&nbsp;<span class="text text-dark">/&nbsp;</span>Testimonial Detail</h5>
+        </div>
+    </div>
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+          {% if review_details %}
+         <div class="card mb-4">
+             {% if review_details.image %}
+            <img class="card-img-top" src="/media/{{review_details.image}}" alt="Reviewer Image">
+            {% else %}
+            <img class="card-img-top" src="{% static 'images/default-review.jfif' %}" alt="Reviewer Image">
+            {% endif %}
+            <div class="card-body">
+               <h5 class="card-title text-capitalize">{{review_details.author}}</h5>
+               <p class="card-text" style="color:rgb(24, 23, 23)">{{review.quote}}</p>
+               <a 
+                    href="{% url 'update_testimonials' review_details.author %}" 
+                    class="btn btn-primary btn-outline-primary btn-sm pl-3 pr-3 mr-4">
+                    Edit
+                </a> 
+               <a href="{% url 'delete_testimonials' review_details.author %}" class="btn btn-danger btn-sm">Delete</a>
+                
+            </div>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+   {% comment %} <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div> {% endcomment %}
+
+
+
+{% endblock %} 

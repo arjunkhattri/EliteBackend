@@ -1,0 +1,43 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+   Elite Constructions Pvt. Ltd.
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <h4 class="ml-4 mb-2">List of contacts</h4>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 text-right">
+            <a href="{% url 'create_contact' %}" class="btn btn-primary btn-sm btn-add">Add 
+            Contacts</a>
+        </div>
+        
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-4">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        {% if contact %}
+                            {% for c in contact %}
+                                <tr>
+                                    <td class="text-capitalize pl-4"><a href="{%  url 'contact_details' c.title %}">{{c.title}}</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td class="text-center pt-5">No contacts found!</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create SubServices Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+ 
+                <h4 class=" mb-4">SubServices </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Add SubServices Details
+            </h5>
+            
+        </div>
+    </div>
+                <form method="POST" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     {{form.as_p}}
+                        <div class="form-group text-center">
+                                <input 
+                                    type="submit" 
+                                    class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                    value="Create"
+                                    tabindex="4">
+                        </div>
+                    
+                </form>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Message from CEO -  Nepal Glory Trek
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+        p {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <a href="{% url 'ceo_message' %}">
+                <h4 class=" mb-5">Message from CEO</h4>
+            </a> 
+            
+        </div>
+    </div>
+    {% if ceo_msg %}
+    <div class="row" >
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <div class="card ">
+                <div class="card-body row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-xl-4">
+                        <img src="/uploads/{{ceo_msg.image}}" class="card-img-top" alt="">
+                        <p class="text-bold text-center text-dark text-capitalize">{{ceo_msg.name}}</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-xl-8">
+                        {{ceo_msg.message | safe }}
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 text-center " >
+                    
+                        <a href="{% url 'update_ceo_message' %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                            Update
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+   {% endif %}
+
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

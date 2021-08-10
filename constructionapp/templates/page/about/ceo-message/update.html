@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update CEO Message - Nepal Glory Trek
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            <a href="{% url 'ceo_message' %}">
+                <h4 class=" mb-4">CEO Message </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update CEO Message
+            </h5>
+            
+        </div>
+    </div>
+    {% if ceo_msg %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">
+                            Full Name
+                        </label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="name" 
+                            id="name"
+                            value="{{ceo_msg.name}}"
+                            tabindex="1"
+                            required
+                            autfocus
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="image">
+                            Image: <br>
+                            Current Image: <a class="text-primary" target="_blank" href="/uploads/{{ceo_msg.image}}">{{ceo_msg.image}}</a>
+                        </label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="image" 
+                            id="image"
+                            tabindex="2"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea 
+                            name="message" 
+                            rows="30" 
+                            cols="80" 
+                            id="message" 
+                            class="form-control"
+                            tabindex="3"
+                            required 
+                            >
+                            {{ceo_msg.message | safe}}
+                            
+                        </textarea>
+                        <script>
+                            CKEDITOR.replace( "message" );
+                        </script>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Update"
+                            tabindex="4"
+                            
+                            >
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+  
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

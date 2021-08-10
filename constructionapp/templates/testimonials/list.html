@@ -1,0 +1,90 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+   Testimonials - Elite Construction.
+
+{% endblock title %}
+{% block custom %}
+
+<style>
+    .list-group
+    a {
+        transition: all 0.3s ease-in-out;
+    }
+    .list-group a:hover {
+        background: rgb(238, 235, 235);
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <h3 class="pb-2">Testimonials</h3>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 text-right">
+          <a href="{% url 'create_testimonials' %}" class="btn btn-primary btn-sm mb-5">Add Testimonial</a>
+        </div>
+        
+    </div>
+   <div class="row">
+      {% comment %} <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+        {% if review_list %}
+        {% for review in review_list %}
+         <div class="list-group mb-4">
+          
+              <a href="{%  url 'testimonials_details' review.author %}" class="list-group-item">
+                
+                <h6 class="list-group-item-heading text-capitalize mt-4 pl-3 mb-3 text-primary">{{review.author}}</h6>
+                <p class="list-group-item-text text-dark ml-3 mr-3">{{review.quote | safe}}</p>
+              </a>
+          
+          </div> {% endcomment %}
+
+          <table class="table table-sm table-hover">
+                    <tbody>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            {% if review_list %}
+                              {% for review in review_list %}
+                                  <tr>
+                                      <td class="text-capitalize pl-4">
+                                          <a href="{%  url 'testimonials_details' review.author %}">
+                                            <h6 class="list-group-item-heading text-capitalize mt-4 pl-3 mb-3 text-primary">{{review.author}}</h6>
+                                          </a> 
+                                          <p class="list-group-item-text text-dark ml-3 mr-3">{{review.quote | safe}}</p>
+                                          <a href="{%  url 'delete_testimonials' review.author %}"> 
+                                              <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                          </a>
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                            {% else %} 
+                            <tr>
+                                <td class="text-center pt-5">No testimonials found!</td>
+                            </tr>
+                        </div>
+                       
+                      
+                    </tbody>
+                </table>
+          
+        {% comment %} {% endfor %}
+        {% else  %}
+        <p class="text-danger text-center mt-3">
+            * No testimonials found!
+        </p> {% endcomment %}
+
+        {% endif %}
+        
+      </div>
+   </div>
+    
+</div>
+
+
+{% endblock content %}

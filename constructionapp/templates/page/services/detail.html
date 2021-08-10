@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if services %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">Title</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{services.title }}
+                        </p><br>
+                        <h3 class="mb-4">ShortDesc</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{services.shortdesc | safe }}
+                        </p><br>
+
+                        <h3 class="mb-4">ShortThumb</h3>
+                        <div class="card mr-3 mb-5" style="width: 18rem;display:inline-block;">
+                            <img class="card-img-top" src="/media/{{services.shortthumb}}">
+                        </div>
+                        <br><br><br>
+               
+                        <h3 class="mb-4">LongDesc</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{services.longdesc| safe}}
+                        </p><br>
+
+                       <h3 class="mb-4">LongThumb</h3> 
+                        {% if services.get_status %}
+                            {% for i in services.images.all %}
+                                <div class="card mr-3 mb-5" style="width: 18rem;display:inline-block;">
+                                    <img class="card-img-top" src="{{i.longthumb.url}}">
+                                    
+                                </div>
+                            {% endfor %}  
+                        {% endif %} 
+                            
+                          
+                            <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_services' services.id %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div> 
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

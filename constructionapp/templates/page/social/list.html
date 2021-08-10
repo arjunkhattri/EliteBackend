@@ -1,0 +1,53 @@
+{% extends  'base.html' %}
+
+{% block title %}
+
+    Social Medias - Nepal Glory Trek Pvt. Ltd.
+
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+          <h3 class="pb-3">Social Medias</h3>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+          <p style="font-weight: 500;font-size: 20px;color:rgb(51, 50, 50);">List of Social Medias</p>
+      </div>
+  </div>
+ <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+      {% if socials %}
+      {% for social in socials %}
+       <div class="list-group mb-4">
+          <a href="{%  url 'view_social' social.id %}" class="list-group-item">
+            <h6 class="list-group-item-heading text-capitalize" style="margin:0 !important;padding:0 !important;">{{social.name}}</h6>
+            </a>
+        </div>
+      {% endfor %}
+      {% else  %}
+      <p class="text-danger text-center mt-5">
+          * No social media found!
+      </p>
+
+      {% endif %}
+      
+    </div>
+ </div>
+ <div class="row">
+     <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+      {% if messages %}
+          {% for message in messages %}
+              <p  class="text-dark">{{message}}</p>
+          {% endfor %}
+      {% endif %}
+     </div>
+ </div>
+</div>
+
+
+{% endblock content %}

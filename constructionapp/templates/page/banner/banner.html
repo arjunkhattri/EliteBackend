@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Banner - Manage UI
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="pb-3 pl-1 mb-2">Banner Detail</h3>
+            </div>
+            <div class="col-md-12 col-xl-12 text-right mb-4">
+                <a href="{% url 'create_banner' %}" class="btn btn-primary btn-sm pl-3 pr-3">Add Banner</a>
+            </div>
+        </div>
+       <div class="row">
+            {% if banners %}
+            {% for banner in banners %}  
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="/uploads/{{banner.image}}">
+                            
+                        <div class="card-body" cl>
+                            <div class="card-title mt-1">
+                                
+                                 <small style="font-weight: 500;">Updated At:&nbsp;{{banner.updated_at}} </small>
+                            </div>
+                                 <form method="POST" id="show-form" class="d-flex" >
+                                        {% csrf_token %}
+                                        
+                                        <div class="form-group" style="display:none;">
+                                            <input type="text" name="banner" value={{banner.id}}>
+                                        </div>
+                                        <div class="form-group">
+                                            <a 
+                                                href="{% url 'update_banner' banner.id %}" 
+                                                class="btn btn-primary btn-sm pl-3 pr-3">
+                                                Edit
+                                                </a> 
+                                        </div>
+                                        <div class="form-group d-flex ml-4 mt-1" style="flex-direction: row-reverse;">
+                                            <label for="{{banner.id}" class="pl-2 mb-1">Show in Front</label>
+                                            <input type="checkbox"  class="banner-check" name="show_in_front" id="{{banner.id}}" style="width:20px;height:20px;" {% if banner.show_in_front %} checked {% endif %}>
+                                        </div>
+                                </form>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+          {% endfor %}
+          {% endif %}
+       </div>
+       <div class="row">
+           <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="text-dark text-center">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+           </div>
+       </div>
+    </div>
+    
+    
+
+{% endblock %}
+
+{% block customJS %}
+<script type="text/javascript">
+        const forms = document.getElementsByTagName('form');
+        const btns = document.getElementsByClassName("banner-check");
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("change", function(e) {
+                if(event.target.value) {
+                    forms[i].submit();
+                } else {
+                    forms[i].submit();
+                }
+            })
+        }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Social Media Detail - Nepal Glory Trek
+{% endblock title%}
+
+{% block content %}
+
+
+<div class="container">
+    {% if social %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            <a href="{% url 'list_social' %}">
+                <h3 class="mb-4">Social Media</h3>
+            </a> 
+            <a href="{% url 'view_social' social.id %}">
+                <h5 class="mt-1">&nbsp;/ Social Media Detail</h5>
+            </a>
+        </div>
+    </div>
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body">
+                <p class="card-text text-capitalize text-dark"> 
+                    <span style="font-weight:500;">
+                        Social Media Name: 
+                    </span> 
+                    <span>
+                        {{social.name}}
+                    </span>   
+                </p>
+                <p class="card-text text-dark"> 
+                    <span style="font-weight:500;">
+                        URL:  
+                    </span> 
+                    <span class="text-primary">
+                        {{social.url}}
+                    </span>   
+                </p>
+
+                <p class="card-text text-dark"> 
+                    <span style="font-weight:500;">
+                        Last Updated:  
+                    </span> 
+                    <span class="text-dark">
+                        {{social.updated_at}}
+                    </span>   
+                </p>
+                
+                <a href="{% url 'update_social' social.id %}" class="btn btn-primary btn-sm mt-3 pl-2 mr-3">
+                    Update
+                </a>                
+               
+                
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center text-danger"> * &nbsp;{{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+   
+</div>
+
+
+
+
+
+{% endblock content %}

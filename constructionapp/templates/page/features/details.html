@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Features Details Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if feature %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">Title</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{feature.title }}
+                        </p><br>
+                        <h3 class="mb-4">Descriptions</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{feature.description | safe }}
+                        </p><br>
+
+                        <h3 class="mb-4">Image</h3>
+                        <img class="card-img-top" src="/media/{{feature.image}}">
+                        <br><br><br>
+
+
+                            <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_features' feature.title %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div> 
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+        p {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if info %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                <h3 class="mb-4">Title</h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{info.title }}
+                </p>
+                <h3 class="mb-4">ShortDesc</h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{info.shortdesc | safe }}
+                </p>
+
+                <h3 class="mb-4">ShortThumb</h3>
+                <img class="card-img-top" src="/media/{{info.short_thumb}}">
+                {% comment %} <p class="card-text text-dark text-justify" > 
+                    {{info.short_thumb | safe }}
+                </p>
+                 {% endcomment %}
+                <h3 class="mb-4">LongDesc</h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{info.longdesc| safe}}
+                </p>
+
+                <h3 class="mb-4">LongThumb</h3>
+                <img class="card-img-top" src="/media/{{info.long_thumb}}">
+
+
+                {% comment %} <img class="card-img-top"  src="/uploads/{{info.image}}" alt="company Image">
+                <h3 class="mt-5">Who We Are ?</h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{about.who_we_are | safe }}
+                </p>
+                <h3 class="mt-5 mb-3">Why with Nepal Glory Trek ? </h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{about.why_with_nepal_glory_trek | safe }}
+                </p>
+                {% endcomment %}
+                <div class="form-group text-center" >
+                    
+                    <a href="{% url 'about_update' %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                        Update
+                    </a>
+                </div>
+                
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+   {% comment %} <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div> {% endcomment %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Teams Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if team %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">Name</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.name }}
+                        </p><br>
+                        <h3 class="mb-4">Designation</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.designation | safe }}
+                        </p><br>
+
+                        <h3 class="mb-4">ProfilePic</h3>
+                        <img class="card-img-top" src="/media/{{team.profilepic}}">
+                        <br><br><br>
+            
+                        <h3 class="mb-4">Bio</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.Bio | safe}}
+                        </p><br>
+
+                        <h3 class="mb-4">Address</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.address}}
+                        </p><br>
+
+                        <h3 class="mb-4">Phone</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.phone}}
+                        </p><br>
+                        
+                        <h3 class="mb-4">Email</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.email}}
+                        </p><br>
+
+                        <h3 class="mb-4">Website</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{team.website}}
+                        </p><br>
+
+
+                            <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_team' team.name %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div> 
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

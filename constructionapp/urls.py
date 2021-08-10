@@ -1,0 +1,77 @@
+from django.conf import settings
+from django.conf.urls.static import static
+from .import views
+from django.urls import path
+
+urlpatterns = [
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('testimonial/list/', views.testimonials_list, name='testimonials_list'),
+    path('testimonial/create/', views.create_testimonials, name = 'create_testimonials'),
+    path('testimonial/details/<str:name>/', views.testimonials_details, name = 'testimonials_details' ),
+    path('testimonial/update/<str:name>/', views.update_testimonials, name = 'update_testimonials'),
+    path('testimonial/delete/<str:author>', views.delete_testimonials, name = 'delete_testimonials'),
+    
+    path('carousel/', views.carousel_list, name='carousel_list'),
+    path('carouosel/create/', views.carousel_create, name='carousel_create'),
+    path('carousel/detail/<str:name>', views.carousel_detail, name='carousel_detail'),
+    path('carousel/update/<str:name>', views.carousel_update, name='carousel_update'),
+    path('carousel/delete/<id>', views.carousel_delete, name='carousel_delete'),
+
+    
+    # path('carousel/create/', views.CarouselCreateView, name='carousel_create'),
+
+    path('about_info/', views.about_info, name='about_info'), 
+    path('about_info/create', views.about_create, name='about_create'),
+    path('about_info/update', views.about_update, name='about_update'),
+    # path('servicetype/', views.service_type, name='service_type'),
+    path('servicetype/create/', views.create_servicetype_list, name='create_servicetype'),
+    path('servicetype/delete/<id>/', views.delete_servicetype, name='delete_servicetype'),
+    # path('services/', views.ServiceListView.as_view(), name='services_list'),
+    path('services/', views.services_list, name='services_list'),
+    path('services/detail/<int:pk>/', views.ServiceDetailView.as_view(), name='services_detail'),
+    path('services/create/', views.ServicesCreateView.as_view(), name='create_services'),
+    path('service/update/<int:pk>/', views.ServiceUpdateView.as_view(), name='update_services'),
+    path('service/delete/<int:pk>/', views.ServiceDeleteView.as_view(), name='delete_services'),
+    # path('subservices/', views.subservices_list, name='subservices_list'),
+    # path('subservices/create', views.create_subservices, name='create_subservices'),
+    path('subservices/create/', views.SubServicesCreateView.as_view(), name='create_subservices'),
+    path('subservices/detail/<str:name>', views.subservices_detail, name='subservices_detail'),
+    # path('subservices/update/<int:pk>/', views.update_subservices, name='update_subservices'),
+    path('subservices/update/<int:pk>/', views.SubServiceUpdateView.as_view(), name ='update_subservices'),
+    path('subservices/delete/<id>/', views.delete_subservices, name='delete_subservices'),
+    path('portfolio/', views.portfolio_list, name='portfolio_list'),
+    # path('portfolio/', views.PortfolioList.as_view(), name='portfolio_list'),
+    # path('portfolio/create/', views.create_portfolio, name='create_portfolio'),
+    path('portfolio/create/', views.PortfolioView.as_view(), name='create_portfolio'),
+
+    # path('portfolio/detail/<str:name>/', views.portfolio_detail, name = 'portfolio_detail'),
+    path('portfolio/detail/<int:pk>/', views.PortfolioDetail.as_view(), name = 'portfolio_detail'),
+    # path('portfolio/update/<str:name>/', views.update_portfolio, name = 'update_portfolio'),
+    path('portfolio/update/<int:pk>/', views.PortfolioUpdateView.as_view(), name= 'update_portfolio'),
+    path('portfolio/delete/<int:pk>/', views.PortfolioDeleteView.as_view(), name='delete_portfolio'),
+    path('features/', views.features_list, name = 'features_list'),
+    path('features/create/', views.create_features, name = 'create_features'),
+    path('features/detail/<str:name>/', views.feature_detail, name = 'feature_detail'),
+    path('features/update/<str:name>/', views.update_features, name = 'update_features'),
+    path('features/delete/<id>', views.features_delete, name='features_delete'),
+    path('team/', views.team_list, name = 'team_list'),
+    path('team/create/', views.create_team, name = 'create_team'),
+    path('team/detail/<str:string>/', views.team_detail, name = 'team_detail'),
+    path('team/update/<str:string>/', views.update_team, name = 'update_team'),
+    path('team/delete/<id>', views.delete_team, name='delete_team'),
+    path('clients/', views.clients_list, name = 'clients_list'),
+    path('clients/create/', views.create_clients, name = 'create_clients'),
+    path('clients/details/<str:name>/', views.clients_detail, name = 'clients_detail'),
+    path('clients/update/<str:name>/', views.update_clients, name = 'update_clients'),
+    path('clients/delete/<id>', views.delete_clients, name='delete_clients'),
+    path('contact/', views.contact_details, name = 'contact_details'),
+    path('contact/create/', views.create_contact, name = 'create_contact'),
+    # path('contact/details/<str:name>/', views.contact_details, name = 'contact_details'),
+    path('contact/update/', views.update_contact, name = 'update_contact'),
+    
+    path('contactmessage/', views.ContactMessageList.as_view(), name='contact_message'),
+    path('contactmessage/detail/<int:pk>', views.ContactMessageDetail.as_view(), name='message_details'),
+    path('contactmessage/create/', views.ContactMessageCreate.as_view(), name='create_contactmessage'),
+    path('contactmessage/delete/<int:pk>', views.ContactMessageDelete.as_view(), name='delete_contactmessage'),
+
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

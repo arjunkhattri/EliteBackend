@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home List Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+        p {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if  carouseldetail %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                <h3 class="mb-4">Title</h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{carouseldetail.title }}
+                </p>
+                <h3 class="mt-5">Images</h3>
+                <img class="card-img-top"  src="{{carouseldetail.bg_image.url}}" alt="company Image"> 
+                
+                {% comment %} <p class="card-text text-dark text-justify" > 
+                    {{home.bg_image }}
+                </p> {% endcomment %}
+                <h3 class="mt-5 mb-3">Descriptions </h3>
+                <p class="card-text text-dark text-justify" > 
+                    {{carouseldetail.text | safe }}
+                </p>
+               
+                <div class="form-group text-center" >
+                    
+                    <a href="{% url 'carousel_update' carouseldetail.title %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                        Update
+                    </a>
+                </div>
+                
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+
+</div>
+
+{% endblock content %}

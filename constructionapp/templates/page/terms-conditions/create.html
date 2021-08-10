@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Terms and Conditions - Nepal Glory Trek
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            <a href="{% url 'terms_and_conditions' %}">
+                <h4 class=" mb-4">Terms and Conditions</h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Create Terms and Conditions
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea 
+                            name="description" 
+                            rows="30" 
+                            cols="80" 
+                            id="description" 
+                            class="form-control" 
+                            >
+                            
+                        </textarea>
+                        <script>
+                            CKEDITOR.replace( "description" );
+                        </script>
+                    </div>
+
+                    <div class="form-group text-center">
+                            <input type="submit" class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" value="Create">
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+  
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

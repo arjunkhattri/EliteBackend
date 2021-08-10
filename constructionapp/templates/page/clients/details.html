@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Clients Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if client %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">ClientName</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{client.clientname }}
+                        </p><br>
+            
+                         <h3 class="mb-4">Image</h3>
+                      
+                            <div class="col s6 m3 l3 xl3">
+                               
+                                <img class="card-img-top" src="/media/{{client.image}}">
+                            </div>
+                        
+                            
+                  
+                        <h3 class="mb-4">URL</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{client.url}}
+                        </p><br>
+
+
+                            <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_clients' client.clientname %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div> 
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

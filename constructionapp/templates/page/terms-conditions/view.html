@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Terms and Conditions - Nepal Glory Trek
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+        p {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if term %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                <p class="card-text text-dark text-justify" > 
+                    {{term.description | safe }}
+                </p>
+               
+                <div class="form-group text-center" >
+                    
+                    <a href="{% url 'update_terms_and_conditions' %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                        Update
+                    </a>
+                </div>
+                
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

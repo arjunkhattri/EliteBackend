@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Testimonial - Elite Construction
+{% endblock title%}
+
+{% block content %}
+
+ <div class="container">
+  <div class="row">
+      <div class="col-md-12 col-xl-12 d-flex">
+          <a href="{% url 'create_testimonials' %}" ><h3 class="pl-1 mb-4">Testimonials</h3></a> 
+          <h5 class="mt-1"> &nbsp; / Create New Testimonial</h5>
+      </div>
+  </div>
+ <div class="row">
+      <div class="col-md-11 col-xl-11">
+          <form method="POST" enctype="multipart/form-data" class="pl-3" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="trekker">Name</label>
+                <input type="text" class="form-control" name="author" autofocus tabindex="1">
+            </div>
+
+            {% comment %} <div class="form-group">
+              <label for="trekker_country">Country</label>
+              <input type="text" class="form-control" name="trekker_country" tabindex="2">
+            </div> {% endcomment %}
+            
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input type="file" class="form-control" name="image" id="image" tabindex="3">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea name="quote" id="quote" cols="30" rows="5" class="form-control" placeholder="Write a review..."></textarea>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-primary mt-3">
+            </div>
+          </form>
+    </div>
+ </div>
+ {% comment %} <div class="row">
+     <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+      {% if messages %}
+          {% for message in messages %}
+              <p class="text-dark text-center">*{{message}}</p>
+          {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+</div> {% endcomment %}
+
+
+
+{% endblock content %}

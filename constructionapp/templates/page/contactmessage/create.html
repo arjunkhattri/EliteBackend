@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Contact Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">Contact </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Add Contact Details
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label 
+                            for="fullname" 
+                            class="mt-1">
+                            FullName
+                        </label>
+                        <input 
+                            type="text" 
+                            name="fullname" 
+                            id="fullname"
+                            tabindex="1" 
+                            class="form-control"
+                            autocomplete="fullname" >
+                            
+                    </div>
+                   
+
+                    <div class="form-group">
+                        <label for="lasname">LastName</label>
+                        <input
+                            type ="text"
+                            name="lastname" 
+                            id="lastname" 
+                            class="form-control"
+                            tabindex="2"
+                            required 
+                            >
+                            
+                        </input>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailaddress">Email</label>
+                        <input
+                            type ="email"
+                            name="emailaddress" 
+                            id="emailaddress" 
+                            class="form-control"
+                            tabindex="3"
+                            required 
+                            >
+                            
+                        </input>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input
+                            type ="number"
+                            name="phone" 
+                            id="phone" 
+                            class="form-control"
+                            tabindex="5"
+                            required 
+                            >
+                            
+                        </input>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="message">Message</label>
+                        <input
+                            type ="text"
+                            name="message" 
+                            id="message" 
+                            class="form-control"
+                            tabindex="6"
+                            required 
+                            >
+                            
+                        </input>
+                    </div>
+                    <script>
+                            CKEDITOR.replace( "message" );
+                    </script>
+                    
+
+                   
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Create">
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+  
+
+</div>
+
+{% endblock content %}

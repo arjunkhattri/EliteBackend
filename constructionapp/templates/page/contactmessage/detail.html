@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Contact Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if messages %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">FirstName</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{messages.firstname }}
+                        </p><br>
+                  
+                        <h3 class="mb-4">LastName</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{messages.lastname}}
+                        </p><br>
+                  
+                        <h3 class="mb-4">Email</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{messages.emailaddress}}
+                        </p><br>
+
+                          <h3 class="mb-4">Phone</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{messages.phone}}
+                        </p><br>
+
+                        <h3 class="mb-4">Message</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{messages.message | safe}}
+                        </p><br>
+                  
+
+
+                            {% comment %} <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_contact' %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div>  {% endcomment %}
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

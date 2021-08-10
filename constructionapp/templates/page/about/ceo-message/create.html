@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create CEO Message - Nepal Glory Trek
+{% endblock title%}
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            <a href="{% url 'ceo_message' %}">
+                <h4 class=" mb-4">CEO Message </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Create a CEO Message
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="image">
+                            Image: 
+                        </label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="image" 
+                            id="image"
+                            tabindex="1"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea 
+                            name="message" 
+                            rows="30" 
+                            cols="80" 
+                            id="message" 
+                            class="form-control"
+                            tabindex="2"
+                            required 
+                            >
+                            
+                        </textarea>
+                        <script>
+                            CKEDITOR.replace( "message" );
+                        </script>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Create"
+                            tabindex="3"
+                            
+                            >
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+  
+   <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div>
+</div>
+
+{% endblock content %}

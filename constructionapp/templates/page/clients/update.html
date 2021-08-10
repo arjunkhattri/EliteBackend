@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Services Page Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">Clients </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update Clients details   
+            </h5>
+            
+        </div>
+    </div>
+
+    {% if client %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label 
+                                    for="clientname" 
+                                    class="mt-1">
+                                    Client Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="clientname" 
+                                    id="clientname"
+                                    value="{{client.clientname}}"
+                                    tabindex="1" 
+                                    class="form-control"
+                                    autocomplete="clientname" >
+                                    
+                            </div>
+
+                                <div class="form-group">
+                                    <label 
+                                        for="longthumb" 
+                                        class="mt-1">
+                                        Images: 
+                                        <a href="/media/{{client.image}}">
+                                        {{client.image}}
+                                        </a>
+                                    </label>
+                                    <input 
+                                        type="file" 
+                                        class="form-control" 
+                                        name="image" 
+                                        id="image" 
+                                        tabindex="2"
+                                        accept="image/*"
+                                        autofocus
+
+                                        >
+                                </div>
+                            
+
+                            <div class="form-group">
+                                <label for="shortdesc">URL</label>
+                                <input
+                                    name="url" 
+                                    id="url" 
+                                    class="form-control"\
+                                    value = {{client.url}}
+                                    tabindex="3"
+                                    required 
+                                    ></input>
+                             
+                            </div>
+
+
+                            <div class="form-group text-center">
+                                <input 
+                                    type="submit" 
+                                    class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                    value="Update">
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+  
+
+</div>
+
+{% endblock content %}

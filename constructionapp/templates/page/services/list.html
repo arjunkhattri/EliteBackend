@@ -1,0 +1,88 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+   Elite Constructions Pvt. Ltd.
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+   
+        {% comment %} <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <h4 class="ml-4 mb-2">List of Services</h4>
+        </div> {% endcomment %}
+        
+        
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 ">
+                    <h4 class="ml-4 mb-2">List of Services</h4>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'create_services' %}" class="btn btn-primary " >Add Services</a>
+                </div><br>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 ">
+              <table class="table table-sm table-hover">
+                    <tbody>
+                        {% if services %}
+                            {% for s in services %}
+                                <tr>
+                                    <td class="text-capitalize pl-4">
+                                        <a href="{%  url 'services_detail' s.id %}">{{s.title}}</a>
+                                        <a href="{%  url 'delete_services' s.id %}">
+                                            <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %} 
+                            <tr>
+                                <td class="text-center pt-5">No services found!</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        
+    </div><br><br>
+
+    <h3>For adding multiple  subservices list inside the services</h3><br><br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-4">
+              
+        </div> 
+          <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 ">
+                    <h4 class="ml-4 mb-2">List of SubServices</h4>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'create_subservices' %}" class="btn btn-primary " >Add Sub-Services</a>
+                </div><br>
+
+            </div>
+              <table class="table table-sm table-hover">
+                    <tbody>
+                        {% if subservices %}
+                            {% for s in subservices %}
+                                <tr>
+                                    <td class="text-capitalize pl-4">
+                                        <a href="{%  url 'subservices_detail' s.servicetitle %}">{{s.servicetitle}}</a>
+                                        <a href="{%  url 'delete_subservices' s.id %}">
+                                            <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %} 
+                            <tr>
+                                <td class="text-center pt-5">No services found!</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+    </div>
+
+    
+</div>
+
+{% endblock content %}

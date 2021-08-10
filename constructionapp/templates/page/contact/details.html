@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Contact Elite Constructions
+{% endblock title%}
+
+{% block custom %}
+    <style rel="stylesheet">
+         {
+            color:#333 !important;
+            font-weight: 400 !important;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if contact %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <h3 class="mb-4">Title</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.title }}
+                        </p><br>
+                  
+                        <h3 class="mb-4">Address</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.address}}
+                        </p><br>
+
+                        <h3 class="mb-4">Phone</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.phone }}
+                        </p><br>
+                  
+                        <h3 class="mb-4">Email</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.email}}
+                        </p><br>
+
+                          <h3 class="mb-4">Facebook</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.facebook}}
+                        </p><br>
+
+                        <h3 class="mb-4">Instagram</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.instagram}}
+                        </p><br>
+                  
+                        <h3 class="mb-4">Linkedin</h3>
+                        <p class="card-text text-dark text-justify" > 
+                            {{contact.linkedin}}
+                        </p><br>
+
+
+                            <div class="form-group text-center" >
+                                
+                                <a href="{% url 'update_contact' %}" class="btn btn-primary text mt-3 mt-3 ml-3">
+                                    Update
+                                </a>
+                            </div> 
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+   
+</div>
+
+{% endblock content %}

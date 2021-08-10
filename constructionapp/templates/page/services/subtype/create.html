@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create SubservicesType - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">SubType </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Add SubType Details
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <div class="card mb-4 pl-2 pt-2">
+                <div class="card-body mb-2">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label 
+                                for="name" 
+                                class="mt-1">
+                                Title
+                            </label>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                id="name"
+                                tabindex="1" 
+                                class="form-control"
+                                autocomplete="name" >
+                        </div>
+
+            
+            
+
+                        <div class="form-group text-center">
+                            <input 
+                                type="submit" 
+                                class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                value="Create">
+                        </div>
+
+                    
+                    </form>
+                </div>
+
+                {% comment %} <div class="row"> {% endcomment %}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-4">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    {% if subtype %}
+                                        {% for s in subtype %}
+                                            <tr>
+                                                <td class="text-capitalize pl-4">
+                                                <a href="#">{{s.name}}</a>
+                                                <a href="{%  url 'delete_servicetype' s.id %}">
+                                                    <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                                </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <tr>
+                                            <td class="text-center pt-5">No subtype found!</td>
+                                        </tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                    </div>
+                   
+                {% comment %} </div> {% endcomment %}
+                
+            </div>
+             <a href="{%  url 'create_services' %}">
+                        <button type="button" class="btn btn-primary btn-sm mt-4 pl-3 pr-3 "> Back</button>
+                    </a>
+         </div>
+   </div>
+  
+
+</div>
+
+{% endblock content %}

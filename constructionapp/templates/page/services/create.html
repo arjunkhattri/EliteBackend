@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Services Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+         
+                <h4 class=" mb-4">Services </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Add Services Details
+            </h5>
+            
+        </div>
+    </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                        {{form.as_p}}
+               
+
+
+                    <div class="form-group text-center" style="color: green">
+                         <a href = "{% url 'create_servicetype' %}" ><b> + Add ServiceType</b></a>
+                    </div>
+
+                    
+
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Create">
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+  
+
+</div>
+
+{% endblock content %}

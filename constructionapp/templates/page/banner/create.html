@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Banner - Manage UI
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <h4 class="mb-5"><a href="{% url 'banner' %}">Create Banner</a>/Ad</h4>
+            </div>
+         
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label 
+                            for="image" 
+                            class="mt-1">
+                            Image: 
+                        </label>
+                        <input 
+                            type="file" 
+                            name="image" 
+                            id="image" 
+                            tabindex="1"
+                            accept="image/*" 
+                            autofocus
+                            >
+                    </div>
+                    
+                    <input type="submit" value="Add" class="btn btn-primary btm-sm mt-4 ml-2">
+        
+                </form>
+          
+            </div>        
+        </div>
+    </div>
+
+{% endblock %}

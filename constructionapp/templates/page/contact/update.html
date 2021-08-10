@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Contact Page Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">Contacts </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update Contact details   
+            </h5>
+            
+        </div>
+    </div>
+
+    {% if contact %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="card mb-4 pl-2 pt-2">
+                    <div class="card-body mb-2">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label 
+                                    for="title" 
+                                    class="mt-1">
+                                    Title
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="title" 
+                                    id="title"
+                                    value="{{contact.title}}"
+                                    tabindex="1" 
+                                    class="form-control"
+                                    autocomplete="title" >
+                                    
+                            </div>
+
+                            <div class="form-group">
+                                <label 
+                                    for="address" 
+                                    class="mt-1">
+                                    Address
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="address" 
+                                    id="address"
+                                    value="{{contact.address}}"
+                                    tabindex="2" 
+                                    class="form-control"
+                                    autocomplete="address" >
+                                    
+                            </div>
+
+                             <div class="form-group">
+                                <label 
+                                    for="phone" 
+                                    class="mt-1">
+                                    Phone
+                                </label>
+                                <input 
+                                    type="number" 
+                                    name="phone" 
+                                    id="phone"
+                                    value="{{contact.phone}}"
+                                    tabindex="3" 
+                                    class="form-control"
+                                    autocomplete="phone" >
+                                    
+                            </div>
+
+                             <div class="form-group">
+                                <label 
+                                    for="email" 
+                                    class="mt-1">
+                                    Email
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="email" 
+                                    id="email"
+                                    value="{{contact.email}}"
+                                    tabindex="4" 
+                                    class="form-control"
+                                    autocomplete="email" >
+                                    
+                            </div>
+
+                             <div class="form-group">
+                                <label 
+                                    for="facebook" 
+                                    class="mt-1">
+                                    Facebook
+                                </label>
+                                <input 
+                                    type="url" 
+                                    name="facebook" 
+                                    id="facebook"
+                                    value="{{contact.facebook}}"
+                                    tabindex="5" 
+                                    class="form-control"
+                                    autocomplete="facebook" >
+                                    
+                            </div>
+
+                             <div class="form-group">
+                                <label 
+                                    for="instagram" 
+                                    class="mt-1">
+                                    Instagram
+                                </label>
+                                <input 
+                                    type="url" 
+                                    name="instagram" 
+                                    id="instagram"
+                                    value="{{contact.instagram}}"
+                                    tabindex="6" 
+                                    class="form-control"
+                                    autocomplete="instagram" >
+                                    
+                            </div>
+
+                             <div class="form-group">
+                                <label 
+                                    for="linkedin" 
+                                    class="mt-1">
+                                    Linkedin
+                                </label>
+                                <input 
+                                    type="url" 
+                                    name="linkedin" 
+                                    id="linkedin"
+                                    value="{{contact.linkedin}}"
+                                    tabindex="7" 
+                                    class="form-control"
+                                    autocomplete="linkedin" >
+                                    
+                            </div>
+                
+                            
+
+                            <div class="form-group text-center">
+                                <input 
+                                    type="submit" 
+                                    class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                    value="Update">
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   {% endif %}
+  
+
+</div>
+
+{% endblock content %}

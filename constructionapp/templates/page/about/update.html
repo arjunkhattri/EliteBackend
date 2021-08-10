@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update About Page Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">About </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update About details   
+            </h5>
+            
+        </div>
+    </div>
+
+    {% if info %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+         <div class="card mb-4 pl-2 pt-2">
+            <div class="card-body mb-2">
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                     <div class="form-group">
+                        <label 
+                            for="title" 
+                            class="mt-1">
+                            Title
+                        </label>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title"
+                            value="{{info.title}}"
+                            tabindex="1" 
+                            class="form-control"
+                            autocomplete="title" >
+                            
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shortdesc">ShortDesc</label>
+                        <textarea 
+                            name="shortdesc" 
+                            rows="30" 
+                            cols="80" 
+                            id="shortdesc" 
+                            class="form-control"
+                            tabindex="2"
+                            required 
+                            >{{info.shortdesc}}</textarea>
+                        <script>
+                            CKEDITOR.replace( "shortdesc" );
+                        </script>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="short_thumb">
+                            ShortThumb:
+                            <a href="/media/{{info.short_thumb}}">
+                            {{info.short_thumb}}
+                            </a> 
+                        </label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="short_thumb" 
+                            id="short_thumb"
+                            tabindex="3"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">LongDesc</label>
+                        <textarea 
+                            name="longdesc" 
+                            rows="30" 
+                            cols="80" 
+                            id="longdesc" 
+                            class="form-control"
+                            tabindex="4"
+                            required 
+                            >{{info.longdesc}}</textarea>
+                        <script>
+                            CKEDITOR.replace( "longdesc" );
+                        </script>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="long_thumb">
+                            LongThumb:
+                            <a href="/media/{{info.long_thumb}}">
+                            {{info.long_thumb}}
+                            </a> 
+                        </label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="long_thumb" 
+                            id="long_thumb"
+                            tabindex="3"
+                            required>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                            value="Update">
+                    </div>
+                
+                </form>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+   {% endif %}
+  
+   {% comment %} <div class="row">
+       <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-center"> * {{message}}</p>
+            {% endfor %}
+        {% endif %}
+       </div>
+   </div> {% endcomment %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+   Elite Constructions Pvt. Ltd.
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+   
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <h4 class="ml-4 mb-2">List of Carousel</h4>
+        </div>
+        
+        
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 text-right">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'carousel_create' %}" class="btn btn-primary ">Add Carousel</a>
+                </div>
+
+            </div>
+        </div> 
+        
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-4">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        {% if carousel%}
+                            {% for c in carousel %}
+                                <tr>
+                                    <td class="text-capitalize pl-4">
+                                        <a href="{%  url 'carousel_detail' c.title %}">{{c.title}}</a> 
+                                         <a href="{%  url 'carousel_delete' c.id %}"> 
+                                            <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %} 
+                            <tr>
+                                <td class="text-center pt-5">No services found!</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update SubServices Information - Elite Constructions
+{% endblock title%}
+
+
+{% block custom %}
+    <script  src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 d-flex">
+            {% comment %} <a href="{% url 'terms_and_conditions' %}"> {% endcomment %}
+                <h4 class=" mb-4">SubServices </h4>
+            </a> 
+            <h5>
+                &nbsp;/&nbsp;Update SubServices Details
+            </h5>
+            
+        </div>
+    </div>
+           {% comment %} {% if qs %}  {% endcomment %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    
+                            <script>
+                                 CKEDITOR.replace( "description" );
+                            </script>
+                        {% comment %} <div class="form-group">
+                            <label for = "servicetitle" class="mt-1">SubList:</label>
+                                <div class="form-group">
+                                    <label for="servicetitle" class="mt-2">servicetitle</label>
+                                    <input 
+                                        type="text" 
+                                        name="servicetitle" 
+                                        id="servicetitle"
+                                        value="{{subservices.servicetitle}}"
+                                        tabindex="1" 
+                                        class="form-control"
+                                        autocomplete="servicetitle" >
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea 
+                                        name="description" 
+                                        rows="30" 
+                                        cols="80" 
+                                        id="description" 
+                                        class="form-control"
+                                        tabindex="2"
+                                        required 
+                                        >
+                                        {{subservices.description}}
+                                    </textarea>
+                                    <script>
+                                        CKEDITOR.replace( "description" );
+                                    </script>
+                                </div> {% endcomment %}
+                   
+                                
+                                <div class="form-group text-center">
+                                    <input 
+                                        type="submit" 
+                                        class="btn btn-primary btn-sm mt-4 pl-3 pr-3 text-center" 
+                                        value="Update">
+                                </div>
+
+                            
+                        </div>
+            {% comment %} {% endif %}  {% endcomment %}
+
+</div>
+
+{% endblock content %}

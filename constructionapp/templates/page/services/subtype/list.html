@@ -1,0 +1,48 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+
+   Elite Constructions Pvt. Ltd.
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+            <h4 class="ml-4 mb-2">List of SubType</h4>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 text-right">
+            <a href="{% url 'create_servicetype' %}" class="btn btn-primary btn-sm btn-add">Add 
+            SubType</a>
+        </div>
+        
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-4">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        {% if subtype %}
+                            {% for s in subtype %}
+                                <tr>
+                                    <td class="text-capitalize pl-4">
+                                    <a href="#">{{s.name}}</a>
+                                    <a href="{%  url 'delete_subtype' s.id %}">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" style="float: right;"> delete</button>
+                                    </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td class="text-center pt-5">No subtype found!</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
