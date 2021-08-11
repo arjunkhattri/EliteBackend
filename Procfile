@@ -1,1 +1,1 @@
-web: gunicorn elitecontruction.wsgi
+web: gunicorn eliteconstruction.wsgi
