@@ -32,7 +32,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-ALLOWED_HOSTS = ['elitebackendadmin.herokuapp.com/dashboard/', '*']
+ALLOWED_HOSTS = ['elitebackendadmin.herokuapp.com/admin/?next=/dashboard', '*']
 LOGIN_URL = "admin_login"
 
 # Application definition
