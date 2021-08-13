@@ -4,7 +4,7 @@ from .import views
 from django.urls import path
 
 urlpatterns = [
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('', views.dashboard, name='dashboard'),
     path('testimonial/list/', views.testimonials_list, name='testimonials_list'),
     path('testimonial/create/', views.create_testimonials, name = 'create_testimonials'),
     path('testimonial/details/<str:name>/', views.testimonials_details, name = 'testimonials_details' ),
