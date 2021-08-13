@@ -360,8 +360,10 @@ class ServiceDeleteView(DeleteView):
 
 @login_required
 def subservices_detail(request, name):  
-    subservices = SubServiceslist.objects.get(servicetitle=name)
-    context = {'subservices':subservices}
+    subservices = SubServiceslist.objects.filter(servicetitle=name)
+    if subservices.exists():
+        subservice =subservices.first()
+    context = {'subservices':subservice}
     return render(request, 'page/services/subservices/detail.html', context)
 
 # @login_required

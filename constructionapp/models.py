@@ -67,7 +67,7 @@ class Services(models.Model):
 class SubServiceslist(models.Model):
     servicetitle = models.CharField(max_length=50, null=False, blank=False)
     description =RichTextUploadingField(blank=True, null=True)
-    services = models.ForeignKey(Services, on_delete=models.CASCADE)
+    services = models.ForeignKey(Services, on_delete=models.CASCADE, related_name='subservices')
     
     def __str__(self):
         return self.servicetitle

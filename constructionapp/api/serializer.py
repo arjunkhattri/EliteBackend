@@ -46,12 +46,19 @@ class ServicesSerializer(serializers.ModelSerializer):
         model = Services
         # fields = '__all__'
         fields = ( 'id', 'title', 'shortdesc', 'shortthumb', 'longdesc', 'servicetype', 'images', 'sublist')
-    
+
     def get_images(self, services):
-        return ServiceImageSerializer(services.preview_images_set.all(), many=True).data
+        images = services.images.all()
+        return ServiceImageSerializer(images, many=True).data
 
     def get_sublist(self, services):
-        return SublistSerializer(services.subserviceslist_set.all(), many=True).data
+        return SublistSerializer(services.subservices, many=True).data
+
+    # def get_images(self, services):
+    #     return ServiceImageSerializer(services.preview_images_set.all(), many=True).data
+
+    # def get_sublist(self, services):
+    #     return SublistSerializer(services.subserviceslist_set.all(), many=True).data
 
 
 class SublistSerializer(serializers.ModelSerializer):
@@ -59,7 +66,7 @@ class SublistSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubServiceslist
         # fields = '__all__'
-        fields = ('servicetitle', 'description')
+        fields = ('description',)
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
     
